@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AuthLayoutComponent } from 'app/auth-layout/auth-layout.component';
-
+import { ChildrenComponent } from './children/children.component'
+import { ChildComponent } from './child/child.component'
+import { ParentComponent } from './parent/parent.component'
+import { NgModule } from '@angular/core'
+import { RouterModule, Routes } from '@angular/router'
+import { LoginComponent } from './login/login.component'
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { ProfileComponent } from './profile/profile.component'
+import { AuthLayoutComponent } from 'app/auth-layout/auth-layout.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -13,21 +15,32 @@ const routes: Routes = [
     path: 'dashboard',
     component: AuthLayoutComponent,
     children: [
-        {
-            path: '',
-            component: DashboardComponent
-        },
+      {
+        path: '',
+        component: DashboardComponent
+      },
+      {
+        path: 'parent',
+        component: ParentComponent
+      },
+      {
+        path: 'child',
+        component: ChildComponent
+      },
+      {
+        path: 'children',
+        component: ChildrenComponent
+      }
     ]
   },
   { path: 'profile', component: ProfileComponent }
-];
+]
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { ChildrenComponent } from './children/children.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HeaderComponent } from './header/header.component';
     DashboardComponent,
     AuthLayoutComponent,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    ParentComponent,
+    ChildComponent,
+    ChildrenComponent
   ],
   imports: [
     BrowserModule,
