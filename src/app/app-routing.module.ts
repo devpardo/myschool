@@ -1,40 +1,33 @@
-import { ChildrenComponent } from './children/children.component'
-import { ChildComponent } from './child/child.component'
-import { ParentComponent } from './parent/parent.component'
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-import { LoginComponent } from './login/login.component'
-import { DashboardComponent } from './dashboard/dashboard.component'
-import { ProfileComponent } from './profile/profile.component'
-import { AuthLayoutComponent } from 'app/auth-layout/auth-layout.component'
+import { AuthGuard } from "@app/auth.guard";
+import { DefaultLayoutComponent } from "@app/default-layout/default-layout.component";
+import { AuthLayoutComponent } from "app/auth-layout/auth-layout.component";
+import { RegisterComponent } from "./register/register.component";
+import { LoginComponent } from "./login/login.component";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { DashboardComponent } from "@app/dashboard/dashboard.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
   {
-    path: 'dashboard',
-    component: AuthLayoutComponent,
+    path: "",
+    component: DefaultLayoutComponent,
     children: [
-      {
-        path: '',
-        component: DashboardComponent
-      },
-      {
-        path: 'parent',
-        component: ParentComponent
-      },
-      {
-        path: 'child',
-        component: ChildComponent
-      },
-      {
-        path: 'children',
-        component: ChildrenComponent
-      }
+      { path: "", component: LoginComponent },
+      { path: "register", component: RegisterComponent }
     ]
   },
-  { path: 'profile', component: ProfileComponent }
-]
+  {
+    path: "dashboard",
+    component: AuthLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: "",
+        component: DashboardComponent
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

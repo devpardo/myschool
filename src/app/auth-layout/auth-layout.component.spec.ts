@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AuthLayoutComponent } from './auth-layout.component';
+import { AuthLayoutComponent } from "./auth-layout.component";
 
-describe('AuthLayoutComponent', () => {
+describe("AuthLayoutComponent", () => {
   let component: AuthLayoutComponent;
   let fixture: ComponentFixture<AuthLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AuthLayoutComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [AuthLayoutComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AuthLayoutComponent);
@@ -19,7 +20,7 @@ describe('AuthLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

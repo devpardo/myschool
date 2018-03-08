@@ -1,36 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { AuthService } from "@app/auth.service";
+import { AuthGuard } from "@app/auth.guard";
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppRoutingModule } from './app-routing.module';
-import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeaderComponent } from './header/header.component';
-import { ParentComponent } from './parent/parent.component';
-import { ChildComponent } from './child/child.component';
-import { ChildrenComponent } from './children/children.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+
+import { AppRoutingModule } from "./app-routing.module";
+
+import { FormsModule } from "@angular/forms";
+
+import { AppComponent } from "@app/app.component";
+import { DefaultLayoutComponent } from "@app/default-layout/default-layout.component";
+import { DashboardComponent } from "@app/dashboard/dashboard.component";
+import { RegisterComponent } from "@app/register/register.component";
+import { HomeComponent } from "@app/home/home.component";
+import { AuthLayoutComponent } from "@app/auth-layout/auth-layout.component";
+import { LoginComponent } from "@app/login/login.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProfileComponent,
-    DashboardComponent,
+    DefaultLayoutComponent,
     AuthLayoutComponent,
-    SidebarComponent,
-    HeaderComponent,
-    ParentComponent,
-    ChildComponent,
-    ChildrenComponent
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
