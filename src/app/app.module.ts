@@ -1,3 +1,4 @@
+import { User } from "./user";
 import { AuthService } from "@app/auth.service";
 import { AuthGuard } from "@app/auth.guard";
 
@@ -27,7 +28,7 @@ import { LoginComponent } from "@app/login/login.component";
     HomeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, User],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

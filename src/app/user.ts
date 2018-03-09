@@ -1,7 +1,6 @@
 export class User {
   id: string;
   email: string;
-  password: string;
   firstName?: string;
   middleName?: string;
   lastName?: string;
@@ -9,14 +8,15 @@ export class User {
   image?: string;
   createdAt?: string;
   updatedAt?: string;
-  role?: string;
+  role: string;
 
-  constructor(id: string, email: string, password: string) {
-    this.id = id;
-    this.email = email;
-    this.password = password;
+  [key: string]: any;
+  private _password?: string;
+  get password() {
+    return this._password;
   }
-  validatePassword(password: string) {
-    return this.password === password;
+  set password(val) {
+    console.log(val);
+    this._password = btoa(val);
   }
 }

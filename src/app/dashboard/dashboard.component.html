@@ -1,0 +1,16 @@
+<h3> {{auth.role.toUpperCase()}}: {{auth.email}}</h3>
+<ul>
+  <div *ngIf="auth.role === 'parent'">
+    <h1>Children</h1>
+    <li *ngFor="let child of auth.children;">
+      Child #{{child.id}} {{child.email}}
+    </li>
+  </div>
+  <div *ngIf="auth.role === 'student'">
+    <h1> Parent: {{auth.parent.email}} </h1>
+    <h1>Subjects</h1>
+    <li *ngFor="let subject of auth.subjects;">
+      Subject #{{subject.id}} {{subject.name}}
+    </li>
+  </div>
+</ul>

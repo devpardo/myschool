@@ -1,3 +1,4 @@
+import { of } from "rxjs/observable/of";
 import { Parent } from "@app/parent";
 import { User } from "@app/user";
 import { Injectable } from "@angular/core";
@@ -18,11 +19,16 @@ export class AuthService {
   constructor(private router: Router) {
     this.checkToken();
   }
+
+  getAuth() {
+    return of(this.auth);
+  }
   login(email: string, password: string) {
     if (this.auth) return alert("Already Logged In");
     const user = this.findUserByEmail(email);
     if (!user) return alert("User not exist");
-    if (!user.validatePassword(password))
+    console.log(user, password);
+    if (user.password !== password)
       return alert(`Invalid password for ${user.email}`);
     this.auth = user;
     const token = { id: this.auth.id };
@@ -33,7 +39,7 @@ export class AuthService {
 
   logout() {
     console.log("logout");
-    localStorage.removeItem("token");
+    localStorage.removeItem("auth");
     this.auth = null;
     this.router.navigate(["/"]);
   }

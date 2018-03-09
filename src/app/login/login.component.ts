@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    this.authService.login(this.credential.email, this.credential.password);
+    this.authService.login(
+      this.credential.email,
+      btoa(this.credential.password)
+    );
   }
 }
